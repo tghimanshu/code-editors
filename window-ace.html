@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naruto Editor</title>
+    <link rel="stylesheet" href="editor/lib/codemirror.css" />
+    <link rel="stylesheet" href="editor/theme/dracula.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="titlebar">
+        <div class="title">Naruto Editor</div>
+        <div class="windowOptions">
+          <button id="minimize">-</button>
+          <button id="maximize">[]</button>
+          <button id="close">x</button>
+        </div>
+      </div>
+      <div class="menu-bar">
+        <ul class="main-menu">
+          <li>
+            File
+            <ul class="sub-menu">
+              <li>New File</li>
+              <li>Open File</li>
+              <li>
+                Open Folder
+                <ul class="sub-menu">
+                  <li>recent</li>
+                  <li>old</li>
+                </ul>
+              </li>
+              <li>Settings</li>
+            </ul>
+          </li>
+          <li>
+            Edit
+            <ul class="sub-menu">
+              <li>Undo</li>
+              <li>Redo</li>
+              <li>Cut</li>
+              <li>Copy</li>
+              <li>Paste</li>
+              <li>Wrap</li>
+            </ul>
+          </li>
+          <li>About</li>
+        </ul>
+      </div>
+      <div class="code-editor">
+        <div id="editor"></div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ace.js"></script>
+    <!-- <script src="editor/mode/javascript/javascript.js"></script> -->
+    <script>
+      var editor = ace.edit("editor", {
+        keyFoldings: true,
+      });
+      editor.setTheme(
+        "https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/theme-monokai.min.js"
+      );
+      editor.session.setMode(
+        "https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/mode-javascript.min.js"
+      );
+    </script>
+  </body>
+</html>

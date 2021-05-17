@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naruto Editor</title>
+    <link
+      rel="stylesheet"
+      href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="editor/lib/codemirror.css" />
+    <link rel="stylesheet" href="editor/theme/dracula.css" />
+    <link rel="stylesheet" href="css/single-file-styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="titlebar">
+        <div class="title">Naruto Editor</div>
+        <div class="windowOptions">
+          <button id="minimize">-</button>
+          <button id="maximize">[]</button>
+          <button id="close">x</button>
+        </div>
+      </div>
+      <div class="code-editor">
+        <div class="editor">
+          <textarea id="editor"></textarea>
+        </div>
+      </div>
+      <div class="status-bar">
+        <div class="saved">Un Saved</div>
+        <div class="language">HTML</div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="editor/lib/codemirror.js"></script>
+    <script src="editor/mode/javascript/javascript.js"></script>
+    <script>
+      const editor = CodeMirror.fromTextArea(
+        document.getElementById("editor"),
+        {
+          lineNumbers: true,
+          mode: "javascript",
+          theme: "dracula",
+          lineWrapping: "wrap",
+        }
+      );
+      $(function () {
+        $(".explorer").resizable({
+          minWidth: 0,
+          maxWidth: $(".code-editor").width() - 200,
+          handles: "e",
+        });
+      });
+    </script>
+  </body>
+</html>

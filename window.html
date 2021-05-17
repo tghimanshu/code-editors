@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naruto Editor</title>
+    <link
+      rel="stylesheet"
+      href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="editor/lib/codemirror.css" />
+    <link rel="stylesheet" href="editor/theme/dracula.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="titlebar">
+        <div class="title">Naruto Editor</div>
+        <div class="windowOptions">
+          <button id="minimize">-</button>
+          <button id="maximize">[]</button>
+          <button id="close">x</button>
+        </div>
+      </div>
+      <div class="menu-bar">
+        <ul class="main-menu">
+          <li>
+            File
+            <ul class="sub-menu">
+              <li>New File</li>
+              <li>Open File</li>
+              <li>
+                Open Folder
+                <ul class="sub-menu">
+                  <li>recent</li>
+                  <li>old</li>
+                </ul>
+              </li>
+              <li>Settings</li>
+            </ul>
+          </li>
+          <li>
+            Edit
+            <ul class="sub-menu">
+              <li>Undo</li>
+              <li>Redo</li>
+              <li>Cut</li>
+              <li>Copy</li>
+              <li>Paste</li>
+              <li>Wrap</li>
+            </ul>
+          </li>
+          <li>About</li>
+        </ul>
+      </div>
+      <div class="code-editor">
+        <div class="explorer">
+          <div class="activeTabs">
+            <div class="file">
+              <div class="file-icon">a</div>
+              <div class="file-name">Untitled</div>
+              <div class="file-changed">.</div>
+              <div class="file-close">x</div>
+            </div>
+            <div class="file">
+              <div class="file-icon">a</div>
+              <div class="file-name">Untitled</div>
+              <div class="file-changed">.</div>
+              <div class="file-close">x</div>
+            </div>
+          </div>
+          <div class="folderOptions">Folder Name <button>Refresh</button></div>
+          <div class="openedFolder">
+            <div class="folder">
+              <div class="folder-details">
+                <div class="folder-type">&gt;</div>
+                <div class="folder-icon">a</div>
+                <div class="folder-name">New Folder</div>
+              </div>
+              <div class="folder-contents">
+                <div class="folder">
+                  <div class="folder-details">
+                    <div class="folder-type">&gt;</div>
+                    <div class="folder-icon">a</div>
+                    <div class="folder-name">New Folder</div>
+                  </div>
+                  <div class="folder-contents">
+                    <div class="file">
+                      <div class="file-icon">a</div>
+                      <div class="file-name">Untitled</div>
+                      <div class="file-changed">.</div>
+                      <div class="file-close">x</div>
+                    </div>
+                    <div class="file">
+                      <div class="file-icon">a</div>
+                      <div class="file-name">Untitled</div>
+                      <div class="file-changed">.</div>
+                      <div class="file-close">x</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="file">
+                  <div class="file-icon">a</div>
+                  <div class="file-name">Untitled</div>
+                  <div class="file-changed">.</div>
+                  <div class="file-close">x</div>
+                </div>
+                <div class="file">
+                  <div class="file-icon">a</div>
+                  <div class="file-name">Untitled</div>
+                  <div class="file-changed">.</div>
+                  <div class="file-close">x</div>
+                </div>
+              </div>
+            </div>
+            <div class="file">
+              <div class="file-icon">a</div>
+              <div class="file-name">Untitled</div>
+              <div class="file-changed">.</div>
+              <div class="file-close">x</div>
+            </div>
+            <div class="file">
+              <div class="file-icon">a</div>
+              <div class="file-name">Untitled</div>
+              <div class="file-changed">.</div>
+              <div class="file-close">x</div>
+            </div>
+          </div>
+        </div>
+        <div class="editor">
+          <textarea id="editor"></textarea>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="editor/lib/codemirror.js"></script>
+    <script src="editor/mode/javascript/javascript.js"></script>
+    <script>
+      const editor = CodeMirror.fromTextArea(
+        document.getElementById("editor"),
+        {
+          lineNumbers: true,
+          mode: "javascript",
+          theme: "dracula",
+          lineWrapping: "wrap",
+        }
+      );
+      $(function () {
+        $(".explorer").resizable({
+          minWidth: 0,
+          maxWidth: $(".code-editor").width() - 200,
+          handles: "e",
+        });
+      });
+    </script>
+  </body>
+</html>
